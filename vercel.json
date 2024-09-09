@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+    {
+        "src": "build.sh",
+        "use": "@vercel/static-build"
+        },
+      {
+        "src": "manage.py",
+        "use": "@vercel/python"
+      },
+
+      {
+        "src": "audio_gpt/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "audio_gpt/wsgi.py"
+      }
+    ]
+  }
+  
