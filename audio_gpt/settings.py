@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-
+from decouple import config
 
 load_dotenv()
 
@@ -130,12 +130,9 @@ if IS_HEROKU_APP:
     # https://devcenter.heroku.com/articles/provisioning-heroku-postgres#application-config-vars
     # https://github.com/jazzband/dj-database-url
     DATABASES = {
-        "default": dj_database_url.config(
-            env="postgresql+psycopg2://postgres:audiogptpassword@database-1.clkkawesqj10.us-east-1.rds.amazonaws.com:port/postgres",
-            conn_max_age=600,
-            conn_health_checks=True,
-            ssl_require=True,
-        ),
+        'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
     }
 else:
     DATABASES = {
