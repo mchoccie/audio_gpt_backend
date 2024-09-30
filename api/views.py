@@ -102,7 +102,7 @@ class AudioFileView(APIView):
             COLLECTION_NAME = user.email
             db = PGVector(embeddings=embeddings, collection_name=COLLECTION_NAME, connection=connection, use_jsonb=True)
             db.add_documents(splits)
-
+            print("Code reaches this far")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
