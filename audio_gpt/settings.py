@@ -93,6 +93,10 @@ CORS_ORIGIN_WHITELIST = [
      'https://my-app-two-opal.vercel.app/'
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://my-app-two-opal.vercel.app',
+]
+
 
 ROOT_URLCONF = 'audio_gpt.urls'
 
